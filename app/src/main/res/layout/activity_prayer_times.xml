@@ -19,14 +19,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <Button
+        android:id="@+id/decreaseDate"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text="<"
+        android:textSize="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/rectangle"
+        app:backgroundTint="@null"
+        />
+
+    <TextView
+        android:id="@+id/dateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="24th June 2025"
+        android:fontFamily="@font/lexend_regular"
+        android:textColor="@color/brown"
+        android:textSize="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:id="@+id/increaseDate"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:text=">"
+        android:textSize="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rectangle"
+        app:backgroundTint="@null"
         />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Fajr"
+                android:fontFamily="@font/lexend_light"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +97,7 @@
                 android:id="@+id/fajrTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/lexend_light"
                 android:hint="00:00"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +130,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="5dp"
                 android:textSize="30dp"
-                />
+                    android:fontFamily="@font/lexend_light"
+                    />
 
             <TextView
                 android:id="@+id/sunriseTimeLabel"
@@ -98,6 +142,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="50dp"
                 android:textSize="30dp"
+                android:fontFamily="@font/lexend_light"
                 />
                 </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -123,8 +168,9 @@
                 android:hint="Zuhr"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="40dp"
                 android:textSize="30dp"
+                android:fontFamily="@font/lexend_light"
                 />
 
             <TextView
@@ -136,6 +182,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="50dp"
                 android:textSize="30dp"
+                android:fontFamily="@font/lexend_light"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -162,6 +209,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="50dp"
+                android:fontFamily="@font/lexend_light"
                 android:textSize="30dp"
                 />
 
@@ -174,6 +222,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="50dp"
                 android:textSize="30dp"
+                android:fontFamily="@font/lexend_light"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -199,8 +248,9 @@
                 android:hint="Maghrib"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="0dp"
                 android:textSize="30dp"
+                android:fontFamily="@font/lexend_light"
                 />
 
             <TextView
@@ -212,6 +262,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="50dp"
                 android:textSize="30dp"
+                android:fontFamily="@font/lexend_light"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -237,7 +288,8 @@
                 android:hint="Isha"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="40dp"
+                android:fontFamily="@font/lexend_light"
                 android:textSize="30dp"
                 />
 
@@ -249,6 +301,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="50dp"
+                android:fontFamily="@font/lexend_light"
                 android:textSize="30dp"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
