@@ -1,0 +1,25 @@
+package com.example.TheBeliever.model;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class PrayerTimes {
+
+    private String date;
+
+    private String fajr;
+
+    private String dhuhr;
+
+    private String asr;
+
+    private String magrib;
+
+    private String isha;
+
+}
