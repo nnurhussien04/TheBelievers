@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout>
+    <data>
+        <variable
+            name="clickHandler"
+            type="com.northcoders.thebelievers.ui.homepage.MainActivityClickHandler" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAE8B4"
-    tools:context=".MainActivity">
+    tools:context=".ui.homepage.MainActivity">
 
     <TextView
         android:id="@+id/title"
@@ -49,6 +55,7 @@
             android:layout_marginStart="20dp"
             android:layout_gravity="top|center_horizontal"
             android:text="Prayer Times"
+            android:onClickListener="@{clickHandler.clickForPrayerTimes}"
             android:textSize="20dp"
             android:fontFamily="@font/lexend_light"
             android:background="@drawable/rectangle"
@@ -62,6 +69,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/rectangle"
             android:fontFamily="@font/lexend_light"
+            android:onClickListener="@{clickHandler.clickForReminder}"
             android:layout_gravity="top|center_horizontal"
             android:text="Reminder"
             android:textSize="20dp"
@@ -76,6 +84,7 @@
             android:layout_gravity="top|center_horizontal"
             android:text="Quran"
             android:textSize="20dp"
+            android:onClickListener="@{clickHandler.clickForQuran}"
             android:fontFamily="@font/lexend_light"
             android:background="@drawable/rectangle"
             app:backgroundTint="@null"
@@ -88,10 +97,11 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/rectangle"
             android:fontFamily="@font/lexend_light"
+            android:onClickListener="@{clickHandler.clickForSettings}"
             android:layout_gravity="top|center_horizontal"
             android:text="Settings"
             android:textSize="20dp"
             app:backgroundTint="@null" />
     </GridLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
