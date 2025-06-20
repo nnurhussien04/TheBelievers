@@ -1,13 +1,12 @@
 package com.northcoders.thebelievers.ui.homepage;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import com.northcoders.thebelievers.QuranActivity;
-import com.northcoders.thebelievers.ReminderActivity;
-import com.northcoders.thebelievers.SettingsActivity;
+import com.northcoders.thebelievers.ui.quran.QuranActivity;
+import com.northcoders.thebelievers.ui.reminder.ReminderActivity;
+import com.northcoders.thebelievers.ui.settings.SettingsActivity;
 import com.northcoders.thebelievers.ui.prayer_times.PrayerTimesActivity;
 
 public class MainActivityClickHandler {

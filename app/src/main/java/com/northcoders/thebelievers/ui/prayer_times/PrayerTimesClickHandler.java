@@ -4,9 +4,12 @@ import android.app.Application;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.northcoders.thebelievers.R;
+import com.northcoders.thebelievers.databinding.ActivityPrayerTimesBinding;
 import com.northcoders.thebelievers.model.PrayerTimes;
+import com.northcoders.thebelievers.ui.homepage.MainActivityViewModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,14 +20,18 @@ import java.util.Locale;
 public class PrayerTimesClickHandler {
     private Context context;
     private PrayerTimes prayerTimes;
-    private Application application;
-
     private PrayerTimesActivity prayerTimesActivity;
+    private MainActivityViewModel viewModel;
 
-    public PrayerTimesClickHandler(Context context, PrayerTimes prayerTimes,PrayerTimesActivity prayerTimesActivity) {
+    private ActivityPrayerTimesBinding binding;
+
+
+    public PrayerTimesClickHandler(Context context, PrayerTimes prayerTimes, PrayerTimesActivity prayerTimesActivity, MainActivityViewModel viewModel, ActivityPrayerTimesBinding binding) {
         this.context = context;
         this.prayerTimes = prayerTimes;
         this.prayerTimesActivity = prayerTimesActivity;
+        this.viewModel = viewModel;
+        this.binding = binding;
     }
 
     public void increaseDecreaseDay(int numValue) {
@@ -41,10 +48,19 @@ public class PrayerTimesClickHandler {
             prayerTimes.setDate(newDate);
             TextView textView = prayerTimesActivity.findViewById(R.id.dateView);
             textView.setText(prayerTimes.dateFormatted());
-
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+
+        viewModel.getPrayerTimes(prayerTimes.getDate()).observe(prayerTimesActivity,prayerTimes -> {
+                    if(prayerTimes != null){
+                        binding.setPrayerTimes(prayerTimes);
+                        binding.setClickHandler(this);
+                    } else{
+                        Toast.makeText(context,"Prayer Times Failed",Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
     }
 
     public void dayForward(View view){

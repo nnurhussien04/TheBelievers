@@ -26,7 +26,7 @@ public class PrayerTimesActivity extends AppCompatActivity {
         ActivityPrayerTimesBinding prayerTimesBinding = DataBindingUtil.setContentView(this,R.layout.activity_prayer_times);
         viewModel.getPrayerTimes().observe(this, prayerTimes -> {
             if(prayerTimes != null){
-                PrayerTimesClickHandler clickHandler = new PrayerTimesClickHandler(this,prayerTimes,this);
+                PrayerTimesClickHandler clickHandler = new PrayerTimesClickHandler(this,prayerTimes,this,viewModel,prayerTimesBinding);
                 prayerTimesBinding.setClickHandler(clickHandler);
                 prayerTimesBinding.setPrayerTimes(prayerTimes);
             }
