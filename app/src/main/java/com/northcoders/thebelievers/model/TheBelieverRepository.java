@@ -2,6 +2,7 @@ package com.northcoders.thebelievers.model;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -22,6 +23,7 @@ public class TheBelieverRepository {
 
     private MutableLiveData<List<Quran>> quranMutableLiveData = new MutableLiveData<>();
 
+    private MutableLiveData<List<Reminder>> reminderMutbaleLiveData = new MutableLiveData<>();
     public TheBelieverRepository(Application application) {
         this.application = application;
     }
@@ -100,5 +102,47 @@ public class TheBelieverRepository {
             }
         });
         return quranMutableLiveData;
+    }
+
+    public MutableLiveData<List<Reminder>> getReminderMutbaleLiveData(){
+        TheBelieverAPIService service = RetrofitInstance.getServiceMethod();
+        Call<List<Reminder>> reminders = service.getReminders();
+        reminders.enqueue(new Callback<List<Reminder>>() {
+            @Override
+            public void onResponse(Call<List<Reminder>> call, Response<List<Reminder>> response) {
+                if(!response.isSuccessful()){
+                    try{
+                        Log.d("ReminderListError", "message" + response.errorBody().string());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                else{
+                    reminderMutbaleLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Reminder>> call, Throwable t) {
+                Log.d("ReminderListError", "onFailure: " + t.getMessage());
+            }
+        });
+        return reminderMutbaleLiveData;
+    }
+
+    public void addReminder(Reminder reminder){
+        TheBelieverAPIService service = RetrofitInstance.getServiceMethod();
+        Call<Reminder> reminderCall = service.postReminders(reminder);
+        reminderCall.enqueue(new Callback<Reminder>() {
+            @Override
+            public void onResponse(Call<Reminder> call, Response<Reminder> response) {
+                Toast.makeText(application.getBaseContext(),"Reminder Posted",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Reminder> call, Throwable t) {
+                Toast.makeText(application.getBaseContext(),"Reminder Failed, Try Again",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

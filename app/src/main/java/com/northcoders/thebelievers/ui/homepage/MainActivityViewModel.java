@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.northcoders.thebelievers.model.PrayerTimes;
 import com.northcoders.thebelievers.model.Quran;
+import com.northcoders.thebelievers.model.Reminder;
 import com.northcoders.thebelievers.model.TheBelieverRepository;
 
 import java.util.List;
@@ -32,6 +33,14 @@ public class MainActivityViewModel extends AndroidViewModel
 
     public MutableLiveData<List<Quran>> getQuran(){
         return repository.getQuranMutableLiveData();
+    }
+
+    public MutableLiveData<List<Reminder>> getReminders(){
+        return repository.getReminderMutbaleLiveData();
+    }
+
+    public void setReminder(Reminder reminder){
+        repository.addReminder(reminder);
     }
 
 
