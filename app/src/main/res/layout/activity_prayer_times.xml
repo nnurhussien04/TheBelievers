@@ -89,6 +89,7 @@
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fajrLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="15dp"
@@ -132,6 +133,7 @@
             app:layout_constraintStart_toStartOf="parent"
             >
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sunriseLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="15dp"
@@ -173,6 +175,7 @@
             app:layout_constraintStart_toStartOf="parent"
             >
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/zuhrLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="15dp"
@@ -214,6 +217,7 @@
             app:layout_constraintStart_toStartOf="parent"
             >
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/asrLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="15dp"
@@ -255,6 +259,7 @@
             app:layout_constraintStart_toStartOf="parent"
             >
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/maghribLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="15dp"
@@ -296,6 +301,7 @@
             app:layout_constraintStart_toStartOf="parent"
             >
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ishaLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="15dp"

@@ -1,185 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.settings.SettingsActivity"
-    android:background="@color/cream"
-    >
+<layout>
+    <data>
+        <variable
+            name="clickHandler"
+            type="com.northcoders.thebelievers.ui.settings.SettingsClickHandler" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.settings.SettingsActivity"
+        android:background="@color/cream"
+        >
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:fontFamily="@font/lexend_medium"
-        android:textColor="#574A24"
-        android:textSize="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="30dp"
-        />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:fontFamily="@font/lexend_medium"
+            android:textColor="#574A24"
+            android:textSize="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="30dp"
+            />
 
-    <TextView
-        android:id="@+id/appearanceText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Appearance"
-        android:textSize="30dp"
-        android:fontFamily="@font/lexend_regular"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        />
+        <TextView
+            android:id="@+id/appearanceText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Appearance"
+            android:textSize="30dp"
+            android:fontFamily="@font/lexend_regular"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            />
 
-    <TextView
-        android:id="@+id/lightDarkText"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Light/Dark Mode"
-        android:textSize="15dp"
-        android:fontFamily="@font/lexend_light"
-        app:layout_constraintTop_toBottomOf="@+id/appearanceText"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        />
+        <TextView
+            android:id="@+id/lightDarkText"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Light/Dark Mode"
+            android:textSize="15dp"
+            android:fontFamily="@font/lexend_light"
+            app:layout_constraintTop_toBottomOf="@+id/appearanceText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            />
 
-    <Button
-        android:id="@+id/lightDarkModeButton"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Dark"
-        android:fontFamily="@font/lexend_bold"
-        app:layout_constraintTop_toBottomOf="@+id/appearanceText"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="@color/brown"
-        />
+        <Button
+            android:id="@+id/lightDarkModeButton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Dark"
+            android:onClick="@{clickHandler::darkModeButton}"
+            android:fontFamily="@font/lexend_bold"
+            app:layout_constraintTop_toBottomOf="@+id/appearanceText"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/brown"
+            />
 
-    <TextView
-        android:id="@+id/aboutUsHeader"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="About Us"
-        android:textSize="30dp"
-        android:fontFamily="@font/lexend_regular"
-        app:layout_constraintTop_toBottomOf="@+id/lightDarkText"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp"
-        />
+        <TextView
+            android:id="@+id/aboutUsHeader"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="About Us"
+            android:textSize="30dp"
+            android:fontFamily="@font/lexend_regular"
+            app:layout_constraintTop_toBottomOf="@+id/lightDarkText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            />
 
-    <TextView
-        android:id="@+id/appVersion"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="App Version"
-        android:textSize="15dp"
-        android:fontFamily="@font/lexend_light"
-        app:layout_constraintTop_toBottomOf="@+id/aboutUsHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        />
+        <TextView
+            android:id="@+id/appVersion"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="App Version"
+            android:textSize="15dp"
+            android:fontFamily="@font/lexend_light"
+            app:layout_constraintTop_toBottomOf="@+id/aboutUsHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            />
 
-    <TextView
-        android:id="@+id/versionInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="V1.0"
-        android:textSize="15dp"
-        android:fontFamily="@font/lexend_light"
-        app:layout_constraintTop_toBottomOf="@+id/aboutUsHeader"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        />
+        <TextView
+            android:id="@+id/versionInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="V1.0"
+            android:textSize="15dp"
+            android:fontFamily="@font/lexend_light"
+            app:layout_constraintTop_toBottomOf="@+id/aboutUsHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            />
 
-    <TextView
-        android:id="@+id/creditsText"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Credits"
-        android:textSize="15dp"
-        android:fontFamily="@font/lexend_light"
-        app:layout_constraintTop_toBottomOf="@+id/appVersion"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        />
-
-
-
-    <TextView
-        android:id="@+id/creditsInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nebil Nurhussien"
-        android:textSize="15dp"
-        android:fontFamily="@font/lexend_light"
-        app:layout_constraintTop_toBottomOf="@+id/versionInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        />
-
-    <TextView
-        android:id="@+id/contactHeader"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Contact Us"
-        android:textSize="30dp"
-        android:fontFamily="@font/lexend_regular"
-        app:layout_constraintTop_toBottomOf="@+id/creditsText"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp"
-        />
-
-    <!--TextView
-        android:id="@+id/contactInfo"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="Contact Us"
-        android:textSize="15dp"
-        android:fontFamily="@font/lexend_light"
-        app:layout_constraintTop_toBottomOf="@+id/contactHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        -->
-
-    <EditText
-        android:id="@+id/ContactUsText"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        app:layout_constraintTop_toBottomOf="@+id/contactHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="20dp"
-        android:backgroundTint="@null"
-        android:fontFamily="@font/lexend_light"
-        android:background="@drawable/messaging_shape"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="24dp"
-        android:backgroundTint="@color/brown"
-        android:fontFamily="@font/lexend_bold"
-        android:text="Submit"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ContactUsText"
-
-        />
+        <TextView
+            android:id="@+id/creditsText"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Credits"
+            android:textSize="15dp"
+            android:fontFamily="@font/lexend_light"
+            app:layout_constraintTop_toBottomOf="@+id/appVersion"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/creditsInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nebil Nurhussien"
+            android:textSize="15dp"
+            android:fontFamily="@font/lexend_light"
+            app:layout_constraintTop_toBottomOf="@+id/versionInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            />
+
+        <TextView
+            android:id="@+id/contactHeader"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:textSize="30dp"
+            android:fontFamily="@font/lexend_regular"
+            app:layout_constraintTop_toBottomOf="@+id/creditsText"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            />
+
+        <!--TextView
+            android:id="@+id/contactInfo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Contact Us"
+            android:textSize="15dp"
+            android:fontFamily="@font/lexend_light"
+            app:layout_constraintTop_toBottomOf="@+id/contactHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            -->
+
+        <EditText
+            android:id="@+id/ContactUsText"
+            android:layout_width="250dp"
+            android:layout_height="80dp"
+            app:layout_constraintTop_toBottomOf="@+id/contactHeader"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@null"
+            android:fontFamily="@font/lexend_light"
+            android:background="@drawable/messaging_shape"
+            />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/brown"
+            android:fontFamily="@font/lexend_bold"
+            android:text="Submit"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ContactUsText"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
