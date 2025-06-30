@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriBuilder;
 
@@ -94,6 +95,24 @@ public class TheBelieverServiceImpl implements TheBelieverService {
         TypeToken<List<Quran>> token = new TypeToken<>(){};
         List<Quran> quranList = gson.fromJson(quranFormat, token.getType());
         return quranList;
+    }
+
+    @Override
+    public Quran getSurah(Integer chapterNo) {
+        String BASE_URL = "https://quranapi.pages.dev/api";
+        ExchangeStrategies strategies = ExchangeStrategies.builder()
+                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(2 * 1024 * 1024)) // 2 MB
+                .build();
+        WebClient webClient = WebClient.builder().baseUrl(BASE_URL).exchangeStrategies(strategies).build();
+        String surahString = webClient.get()
+                .uri("/{chapterNo}.json", chapterNo)
+                .header(HttpHeaders.ACCEPT,MediaType.APPLICATION_JSON_VALUE)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+        Gson gson = new Gson();
+        Quran quran = gson.fromJson(surahString,Quran.class);
+        return quran;
     }
 
 

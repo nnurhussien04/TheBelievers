@@ -12,5 +12,5 @@ public interface TheBelieverService {
     List<Reminder> getAllReminders();
     Reminder addReminders(Reminder reminder);
     List<Quran> getQuranAPI();
-
+    Quran getSurah(Integer chapterNo);
 }

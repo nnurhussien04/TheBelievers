@@ -14,6 +14,8 @@ public class PrayerTimes {
 
     private String fajr;
 
+    private String sunrise;
+
     private String dhuhr;
 
     private String asr;

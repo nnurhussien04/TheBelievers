@@ -34,10 +34,17 @@ public class TheBelieverController {
         return new ResponseEntity<>(theBelieverService.getQuranAPI(),HttpStatus.OK);
     }
 
+    @GetMapping("quran/{chapter}")
+    public ResponseEntity<?> surahQuran(@PathVariable Integer chapter){
+        return new ResponseEntity<>(theBelieverService.getSurah(chapter),HttpStatus.OK);
+    }
+
     @GetMapping("prayer_times/{date}")
     public ResponseEntity<?> chapterQuran(@PathVariable String date){
         return new ResponseEntity<>(theBelieverService.getPrayerTimes(date),HttpStatus.OK);
     }
+
+
 
 
 
