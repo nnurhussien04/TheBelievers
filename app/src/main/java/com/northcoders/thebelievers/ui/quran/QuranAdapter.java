@@ -24,18 +24,20 @@ public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> 
     private Context context;
 
     private Boolean darkMode;
+    private RecyclerViewInterface recyclerViewInterface;
 
-    public QuranAdapter(List<Quran> quranList, Context context,Boolean darkMode) {
+    public QuranAdapter(List<Quran> quranList, Context context,Boolean darkMode,RecyclerViewInterface recyclerViewInterface) {
         this.quranList = quranList;
         this.context = context;
         this.darkMode = darkMode;
+        this.recyclerViewInterface = recyclerViewInterface;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         QuranItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),R.layout.quran_item,parent,false);
-        return new ViewHolder(binding);
+        return new ViewHolder(binding,recyclerViewInterface);
     }
 
     @Override
@@ -60,9 +62,20 @@ public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         QuranItemBinding quranItemBinding;
 
-        public ViewHolder(QuranItemBinding quranItemBinding) {
+        public ViewHolder(QuranItemBinding quranItemBinding,RecyclerViewInterface recyclerViewInterface) {
             super(quranItemBinding.getRoot());
             this.quranItemBinding = quranItemBinding;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(recyclerViewInterface!=null){
+                        int position = getAdapterPosition();
+                        if(position!=RecyclerView.NO_POSITION){
+                            recyclerViewInterface.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }

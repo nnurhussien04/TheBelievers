@@ -28,6 +28,9 @@
             android:name=".ui.prayer_times.PrayerTimesActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.surah.SurahActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.homepage.MainActivity"
             android:exported="true">
             <intent-filter>

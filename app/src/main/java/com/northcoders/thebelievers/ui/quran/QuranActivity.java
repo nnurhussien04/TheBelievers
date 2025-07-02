@@ -1,5 +1,7 @@
 package com.northcoders.thebelievers.ui.quran;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -7,6 +9,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,10 +20,12 @@ import com.northcoders.thebelievers.databinding.ActivityQuranBinding;
 import com.northcoders.thebelievers.model.Quran;
 import com.northcoders.thebelievers.ui.base.BaseActivity;
 import com.northcoders.thebelievers.ui.homepage.MainActivityViewModel;
+import com.northcoders.thebelievers.ui.surah.SurahActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class QuranActivity extends BaseActivity {
+public class QuranActivity extends BaseActivity implements RecyclerViewInterface {
     private RecyclerView recyclerView;
     private List<Quran> quranList;
     private QuranAdapter quranAdapter;
@@ -59,13 +64,49 @@ public class QuranActivity extends BaseActivity {
         });
     }
     public void displayInRecyclerView(){
-        quranAdapter = new QuranAdapter(quranList,this,isDarkMode);
+        quranAdapter = new QuranAdapter(quranList,this,isDarkMode,this);
         recyclerView = quranBinding.recyclerView;
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(quranAdapter);
         quranAdapter.notifyDataSetChanged();
     }
+
+
+
+    @Override
+    public void onItemClick(int position) {
+        String identifier = "QURAN_CHAPTER";
+        mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+
+        // Get LiveData
+        LiveData<Quran> quranLiveData = mainActivityViewModel.getSurah(position + 1);
+
+        // Define the observer
+        Observer<Quran> observer = new Observer<Quran>() {
+            @Override
+            public void onChanged(Quran quran) {
+                if (quran != null) {
+                    quranLiveData.removeObserver(this);
+
+                    if (!quran.getArabic1().contains("بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ")) {
+                        ArrayList<String> quranList = new ArrayList<>(quran.getArabic1());
+                        quranList.add(0, "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ");
+                        quran.setArabic1(quranList);
+                    }
+
+
+                    Intent intent = new Intent(QuranActivity.this, SurahActivity.class);
+                    intent.putExtra(identifier, quran);
+                    startActivity(intent);
+                }
+            }
+        };
+
+
+        quranLiveData.observe(this, observer);
+    }
+
 
 
 }

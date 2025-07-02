@@ -43,6 +43,10 @@ public class MainActivityViewModel extends AndroidViewModel
         repository.addReminder(reminder);
     }
 
+    public MutableLiveData<Quran> getSurah(Integer chapter){
+        return repository.getSurah(chapter);
+    }
+
 
 
 

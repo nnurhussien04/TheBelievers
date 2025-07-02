@@ -29,5 +29,8 @@ public interface TheBelieverAPIService {
     @POST("reminder")
     Call<Reminder> postReminders(@Body Reminder reminder);
 
+    @GET("quran/{chapter}")
+    Call<Quran> getSurah(@Path("chapter") Integer number);
+
 
 }

@@ -15,6 +15,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class TheBelieverRepository {
     private MutableLiveData<PrayerTimes> prayerTimesMutableLiveData = new MutableLiveData<>();
@@ -22,8 +23,8 @@ public class TheBelieverRepository {
     private Application application;
 
     private MutableLiveData<List<Quran>> quranMutableLiveData = new MutableLiveData<>();
-
     private MutableLiveData<List<Reminder>> reminderMutbaleLiveData = new MutableLiveData<>();
+    private MutableLiveData<Quran> surahMutableLiveData = new MutableLiveData<>();
     public TheBelieverRepository(Application application) {
         this.application = application;
     }
@@ -145,4 +146,32 @@ public class TheBelieverRepository {
             }
         });
     }
+
+    public MutableLiveData<Quran> getSurah(Integer chapter){
+        TheBelieverAPIService service = RetrofitInstance.getServiceMethod();
+        Call<Quran> surahCall = service.getSurah(chapter);
+        surahCall.enqueue(new Callback<Quran>() {
+            @Override
+            public void onResponse(Call<Quran> call, Response<Quran> response) {
+                if(response.isSuccessful()){
+                    surahMutableLiveData.setValue(response.body());
+                }
+                else{
+                    try{
+                        Log.d("SurahError", "onResponse: + " +response.errorBody().string());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Quran> call, Throwable t) {
+                Log.d("SurahError", "onFailure: " + t.getMessage());
+                Toast.makeText(application.getBaseContext(),"Surah Error",Toast.LENGTH_SHORT).show();
+            }
+        });
+        return surahMutableLiveData;
+    }
+
 }
