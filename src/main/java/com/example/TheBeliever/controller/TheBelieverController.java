@@ -44,6 +44,11 @@ public class TheBelieverController {
         return new ResponseEntity<>(theBelieverService.getPrayerTimes(date),HttpStatus.OK);
     }
 
+    @PostMapping("email")
+    public ResponseEntity<?> sendEmail(@RequestBody String feedback){
+        return new ResponseEntity<>(theBelieverService.sendFeedback(feedback),HttpStatus.OK);
+    }
+
 
 
 

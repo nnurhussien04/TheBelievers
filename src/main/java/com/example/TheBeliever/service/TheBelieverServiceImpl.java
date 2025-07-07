@@ -9,6 +9,9 @@ import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -22,6 +25,9 @@ public class TheBelieverServiceImpl implements TheBelieverService {
 
     @Autowired
     ReminderRepository reminderRepository;
+
+    @Autowired
+    JavaMailSender mailSender;
 
     @Override
     public PrayerTimes getPrayerTimes() {
@@ -113,6 +119,17 @@ public class TheBelieverServiceImpl implements TheBelieverService {
         Gson gson = new Gson();
         Quran quran = gson.fromJson(surahString,Quran.class);
         return quran;
+    }
+
+    @Override
+    public String sendFeedback(String feedback) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("thebelievers@sandbox6f93a2dd84c64fe89aeab9ebbe50584b.mailgun.org");
+        message.setTo("nnurhussien03@gmail.com");
+        message.setSubject("Feedback");
+        message.setText(feedback);
+        mailSender.send(message);
+        return "Success";
     }
 
 
