@@ -148,6 +148,7 @@ public class TheBelieverRepository {
     }
 
     public MutableLiveData<Quran> getSurah(Integer chapter){
+        surahMutableLiveData = new MutableLiveData<>();
         TheBelieverAPIService service = RetrofitInstance.getServiceMethod();
         Call<Quran> surahCall = service.getSurah(chapter);
         surahCall.enqueue(new Callback<Quran>() {

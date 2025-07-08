@@ -79,15 +79,14 @@ public class QuranActivity extends BaseActivity implements RecyclerViewInterface
         String identifier = "QURAN_CHAPTER";
         mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
-        // Get LiveData
+        // Always fetch a fresh LiveData instance (assuming it internally makes a network call or fetch)
         LiveData<Quran> quranLiveData = mainActivityViewModel.getSurah(position + 1);
 
-        // Define the observer
         Observer<Quran> observer = new Observer<Quran>() {
             @Override
             public void onChanged(Quran quran) {
                 if (quran != null) {
-                    quranLiveData.removeObserver(this);
+                    quranLiveData.removeObserver(this); // Prevent repeat triggers
 
                     if (!quran.getArabic1().contains("بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ")) {
                         ArrayList<String> quranList = new ArrayList<>(quran.getArabic1());
@@ -95,14 +94,12 @@ public class QuranActivity extends BaseActivity implements RecyclerViewInterface
                         quran.setArabic1(quranList);
                     }
 
-
                     Intent intent = new Intent(QuranActivity.this, SurahActivity.class);
                     intent.putExtra(identifier, quran);
                     startActivity(intent);
                 }
             }
         };
-
 
         quranLiveData.observe(this, observer);
     }
