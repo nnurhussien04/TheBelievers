@@ -1,0 +1,8 @@
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/TheBelieverApplication.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/controller/TheBelieverController.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/model/PrayerTimes.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/model/Quran.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/model/Reminder.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/repository/ReminderRepository.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/service/TheBelieverService.java
+/home/nebil/the_believers/TheBeliever/src/main/java/com/example/TheBeliever/service/TheBelieverServiceImpl.java
