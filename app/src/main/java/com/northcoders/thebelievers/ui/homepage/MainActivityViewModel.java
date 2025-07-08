@@ -47,6 +47,10 @@ public class MainActivityViewModel extends AndroidViewModel
         return repository.getSurah(chapter);
     }
 
+    public void setFeedback(String feedback){
+        repository.sendFeedback(feedback);
+    }
+
 
 
 

@@ -185,6 +185,7 @@
             android:backgroundTint="@color/brown"
             android:fontFamily="@font/lexend_bold"
             android:text="Submit"
+            android:onClick="@{clickHandler::submitFeedback}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ContactUsText"
             />

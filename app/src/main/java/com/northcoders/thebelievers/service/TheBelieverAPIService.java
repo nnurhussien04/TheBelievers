@@ -32,5 +32,8 @@ public interface TheBelieverAPIService {
     @GET("quran/{chapter}")
     Call<Quran> getSurah(@Path("chapter") Integer number);
 
+    @POST("email")
+    Call<String> sendFeedback(@Body String feedback);
+
 
 }

@@ -12,13 +12,16 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.northcoders.thebelievers.R;
 import com.northcoders.thebelievers.databinding.ActivitySettingsBinding;
 import com.northcoders.thebelievers.ui.base.BaseActivity;
 import com.northcoders.thebelievers.ui.homepage.MainActivity;
+import com.northcoders.thebelievers.ui.homepage.MainActivityViewModel;
 
 public class SettingsActivity extends BaseActivity {
+
 
 
 
@@ -26,7 +29,8 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        SettingsClickHandler clickHandler = new SettingsClickHandler(this,this);
+        MainActivityViewModel viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        SettingsClickHandler clickHandler = new SettingsClickHandler(this,this,viewModel);
         ActivitySettingsBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_settings);
         binding.setClickHandler(clickHandler);
 

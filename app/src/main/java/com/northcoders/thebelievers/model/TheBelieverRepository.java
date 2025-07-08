@@ -174,4 +174,25 @@ public class TheBelieverRepository {
         return surahMutableLiveData;
     }
 
+    public void sendFeedback(String feedback){
+        TheBelieverAPIService service = RetrofitInstance.getServiceMethod();
+        Call<String> feedbackSent = service.sendFeedback(feedback);
+        feedbackSent.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(application.getBaseContext(),"Feedback Sent",Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(application.getBaseContext(),"Feedback Failed, Try Again",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d("FeedbackError", "onFailure: " + t.getMessage());
+                Toast.makeText(application.getBaseContext(),"Feedback Failed, Try Again",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }
