@@ -19,8 +19,7 @@ public class RetrofitInstance {
 
 
     public static TheBelieverAPIService getServiceMethod(){
-        BASE_URL = "http://172.26.126.229:8080/api/v1/TheBeliever/";
-
+        BASE_URL = "https://thebelievers.onrender.com/api/v1/TheBeliever/";
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
